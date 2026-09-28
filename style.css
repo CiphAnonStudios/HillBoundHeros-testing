@@ -1,0 +1,1028 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --orange: #ff7417;
+    --orange2: #ff9d28;
+    --dark: #121820;
+    --dark2: #1b232d;
+    --dark3: #26313d;
+    --white: #ffffff;
+    --muted: #aeb8c4;
+    --green: #58d46b;
+    --red: #ef5350;
+    --yellow: #ffd54a;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #10151b;
+    font-family: "Nunito", sans-serif;
+    color: white;
+    user-select: none;
+}
+
+body {
+    touch-action: none;
+}
+
+button {
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+    color: white;
+}
+
+.screen {
+    position: fixed;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* ROTATE */
+
+#rotate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #10151b;
+    text-align: center;
+    padding: 30px;
+}
+
+.rotate-icon {
+    font-size: 60px;
+    animation: rotatePhone 1.5s infinite ease-in-out;
+}
+
+#rotate h2 {
+    font-family: "Lilita One";
+    font-size: 32px;
+    margin: 15px 0 5px;
+}
+
+#rotate p {
+    color: var(--muted);
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+    #rotate {
+        display: flex;
+    }
+
+    #intro,
+    #loading,
+    #menu,
+    #garage,
+    #characters,
+    #missions,
+    #settings,
+    #gameScreen {
+        display: none !important;
+    }
+}
+
+@keyframes rotatePhone {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
+}
+
+/* INTRO */
+
+#intro {
+    background:
+        radial-gradient(circle at center, #252d37, #0e1217 70%);
+    align-items: center;
+    justify-content: center;
+}
+
+.studio-logo {
+    width: min(55vw, 420px);
+    max-height: 45vh;
+    object-fit: contain;
+    animation: introLogo 2.5s ease forwards;
+}
+
+@keyframes introLogo {
+    0% {
+        opacity: 0;
+        transform: scale(.75);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+/* LOADING */
+
+#loading {
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 40%, #2b3440, #10151b 70%);
+}
+
+.loading-box {
+    width: min(620px, 80vw);
+    text-align: center;
+}
+
+.game-logo {
+    width: min(450px, 70vw);
+    max-height: 35vh;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+
+.loading-track {
+    height: 18px;
+    background: #252e38;
+    border-radius: 20px;
+    padding: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 3px 8px #0008;
+}
+
+#loadingFill {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--orange), #ffc34d);
+    transition: width .2s;
+}
+
+#loadingText {
+    margin-top: 12px;
+    font-weight: 800;
+}
+
+#loadingTip {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* MENU */
+
+#menu {
+    flex-direction: column;
+    background:
+        linear-gradient(#0002, #0008),
+        radial-gradient(circle at 50% 20%, #4a5968, #171d24 65%);
+}
+
+#menu::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 42%;
+    background:
+        linear-gradient(160deg, transparent 20%, #18231e 21% 45%, #101712 46%);
+    opacity: .9;
+}
+
+.menu-top {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+}
+
+.currency {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #10161dcc;
+    border: 2px solid #ffffff16;
+    border-radius: 30px;
+    padding: 8px 15px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.currency.small {
+    font-size: 15px;
+}
+
+.coin-icon {
+    color: #ffc83d;
+    font-size: 17px;
+    text-shadow: 0 1px 0 #9d6800;
+}
+
+.small-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: #202a35dd;
+    font-size: 22px;
+}
+
+.menu-content {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: min(850px, 90vw);
+    text-align: center;
+}
+
+.menu-logo {
+    width: min(440px, 65vw);
+    max-height: 28vh;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.best-box {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 8px 22px;
+    background: #10161dcc;
+    border-radius: 16px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.best-box strong {
+    color: white;
+    font-size: 20px;
+}
+
+.main-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.main-button {
+    width: min(260px, 40vw);
+    min-height: 100px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 7px 0 #0005;
+    transition: transform .1s;
+}
+
+.main-button:active {
+    transform: translateY(5px);
+}
+
+.main-button span {
+    font-size: 27px;
+}
+
+.main-button b {
+    font-family: "Lilita One";
+    font-size: 29px;
+}
+
+.main-button small {
+    opacity: .75;
+    font-weight: 800;
+}
+
+.race-button {
+    background: linear-gradient(#ff8d28, #ed5d0b);
+}
+
+.adventure-button {
+    background: linear-gradient(#5dca6a, #359c4b);
+}
+
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.menu-buttons button {
+    background: #202a35ee;
+    border: 1px solid #ffffff15;
+    border-radius: 13px;
+    padding: 11px 16px;
+    font-weight: 800;
+}
+
+/* PANELS */
+
+.panel-screen {
+    flex-direction: column;
+    background:
+        radial-gradient(circle at 50% -20%, #3b4755, #121820 60%);
+}
+
+.panel-header {
+    height: 70px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    background: #10161ddd;
+    border-bottom: 1px solid #ffffff12;
+}
+
+.panel-header h2 {
+    font-family: "Lilita One";
+    font-size: 28px;
+    margin: 0;
+    flex: 1;
+}
+
+.backBtn {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    background: #27323e;
+    font-size: 28px;
+}
+
+/* GARAGE */
+
+.garage-layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(330px, 45%) 1fr;
+    min-height: 0;
+}
+
+.vehicle-showcase {
+    padding: 20px;
+    text-align: center;
+    overflow: auto;
+}
+
+.showcase-stage {
+    width: 100%;
+    height: 240px;
+    border-radius: 25px;
+    background:
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px),
+        #171f28;
+    background-size: 30px 30px;
+    border: 2px solid #ffffff0b;
+    overflow: hidden;
+}
+
+#previewCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.vehicle-showcase h2 {
+    font-family: "Lilita One";
+    font-size: 31px;
+    margin: 8px 0 0;
+}
+
+.vehicle-showcase p {
+    color: var(--muted);
+    margin: 3px 0 15px;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.stat-grid > div {
+    text-align: left;
+}
+
+.stat-grid span {
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--muted);
+}
+
+.stat {
+    height: 8px;
+    margin-top: 4px;
+    background: #29323c;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stat i {
+    display: block;
+    height: 100%;
+    width: 50%;
+    background: var(--orange);
+}
+
+.drive-button {
+    width: min(400px, 80%);
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 16px;
+    background: linear-gradient(#ff932c, #eb5d0b);
+    font-family: "Lilita One";
+    font-size: 25px;
+    box-shadow: 0 5px 0 #8d3100;
+}
+
+.garage-right {
+    padding: 20px;
+    overflow: auto;
+    background: #11171e88;
+}
+
+.garage-right h3 {
+    margin: 0 0 9px;
+    font-size: 15px;
+}
+
+.vehicle-list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+}
+
+.vehicle-card {
+    min-width: 145px;
+    background: #222d38;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.vehicle-card.selected {
+    border-color: var(--orange);
+}
+
+.vehicle-card.locked {
+    opacity: .55;
+}
+
+.vehicle-card canvas {
+    width: 120px;
+    height: 65px;
+}
+
+.vehicle-card b {
+    display: block;
+}
+
+.vehicle-card small {
+    color: var(--muted);
+}
+
+.upgrade-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.upgrade {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222d38;
+    border-radius: 13px;
+    padding: 12px;
+    text-align: left;
+}
+
+.upgrade b {
+    display: block;
+}
+
+.upgrade small {
+    color: var(--muted);
+}
+
+.upgrade span {
+    color: var(--orange);
+    font-weight: 900;
+}
+
+.stage-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stage-chip {
+    background: #222d38;
+    border-radius: 12px;
+    padding: 11px 15px;
+    font-weight: 800;
+    border: 2px solid transparent;
+}
+
+.stage-chip.selected {
+    border-color: var(--orange);
+}
+
+.stage-chip.locked {
+    opacity: .45;
+}
+
+/* CHARACTERS */
+
+.character-list {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px;
+    overflow: auto;
+}
+
+.character-card {
+    min-height: 190px;
+    background: #222d38;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+.character-card.selected {
+    border-color: var(--orange);
+}
+
+.character-card canvas {
+    width: 100%;
+    height: 115px;
+}
+
+.character-card h3 {
+    margin: 3px 0;
+}
+
+.character-card small {
+    color: var(--muted);
+}
+
+/* MISSIONS */
+
+.mission-list {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 13px;
+    overflow: auto;
+}
+
+.mission {
+    background: #222d38;
+    border-radius: 17px;
+    padding: 17px;
+}
+
+.mission.completed {
+    border: 2px solid var(--green);
+}
+
+.mission h3 {
+    margin: 0 0 4px;
+}
+
+.mission p {
+    color: var(--muted);
+    margin: 0 0 12px;
+}
+
+.mission-progress {
+    height: 9px;
+    background: #11171d;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.mission-progress i {
+    display: block;
+    height: 100%;
+    background: var(--orange);
+}
+
+.mission-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9px;
+    font-weight: 900;
+}
+
+/* SETTINGS */
+
+.settings-list {
+    width: min(700px, 90%);
+    margin: 30px auto;
+}
+
+.setting,
+.danger-setting {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+    background: #222d38;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.setting b {
+    color: var(--green);
+}
+
+.danger-setting {
+    justify-content: center;
+    background: #7c2929;
+}
+
+/* GAME */
+
+#gameScreen {
+    background: #76b9dc;
+}
+
+#game {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#hud {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hud-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+}
+
+.distance-box {
+    min-width: 115px;
+    padding: 7px 12px;
+    border-radius: 13px;
+    background: #111923c9;
+    box-shadow: 0 3px 10px #0003;
+}
+
+.distance-box small {
+    display: block;
+    font-size: 9px;
+    color: #bfc9d4;
+    font-weight: 900;
+}
+
+.distance-box b {
+    font-size: 22px;
+}
+
+.hud-coins {
+    background: #111923c9;
+    border-radius: 13px;
+    padding: 10px 14px;
+    font-weight: 900;
+    color: #ffd04a;
+}
+
+#pauseBtn {
+    pointer-events: auto;
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: #111923c9;
+    font-size: 19px;
+}
+
+.race-bar {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(300px, 40vw);
+    height: 9px;
+    border-radius: 20px;
+    background: #111923aa;
+    overflow: hidden;
+    display: none;
+}
+
+.race-bar.active {
+    display: block;
+}
+
+#raceFill {
+    width: 0;
+    height: 100%;
+    background: var(--orange);
+}
+
+.race-bar span {
+    position: absolute;
+    left: 50%;
+    top: -17px;
+    transform: translateX(-50%);
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.fuel-container {
+    position: absolute;
+    right: 15px;
+    top: 67px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fuel-icon {
+    font-size: 17px;
+}
+
+.fuel-bar {
+    width: 100px;
+    height: 9px;
+    border-radius: 10px;
+    background: #111923aa;
+    overflow: hidden;
+}
+
+#fuelFill {
+    width: 100%;
+    height: 100%;
+    background: var(--green);
+}
+
+.combo-container {
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.combo-container.active {
+    opacity: 1;
+}
+
+#comboText {
+    font-family: "Lilita One";
+    font-size: 19px;
+    text-shadow: 0 2px 3px #0008;
+}
+
+.combo-bar {
+    height: 5px;
+    background: #111923aa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#comboFill {
+    height: 100%;
+    width: 100%;
+    background: var(--yellow);
+}
+
+.controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.pedal {
+    pointer-events: auto;
+    width: 82px;
+    height: 65px;
+    border-radius: 20px;
+    background: #111923bb;
+    border: 2px solid #ffffff20;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.pedal:active {
+    transform: scale(.94);
+}
+
+.gas {
+    color: #71e77e;
+}
+
+.brake {
+    color: #ff7777;
+}
+
+#countdown {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Lilita One";
+    font-size: min(110px, 17vw);
+    text-shadow: 0 6px 0 #0005;
+}
+
+/* POPUPS */
+
+#trickPopup,
+#missionPopup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Lilita One";
+    text-align: center;
+    text-shadow: 0 3px 4px #0008;
+    pointer-events: none;
+}
+
+#trickPopup {
+    top: 32%;
+    font-size: 31px;
+}
+
+#missionPopup {
+    top: 23%;
+    font-size: 18px;
+}
+
+/* OVERLAYS */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #05080dcc;
+    backdrop-filter: blur(4px);
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay-box,
+.results-box {
+    width: min(430px, 85vw);
+    padding: 30px;
+    border-radius: 25px;
+    background: #202a35;
+    text-align: center;
+    box-shadow: 0 20px 60px #0007;
+}
+
+.overlay-box h1,
+.results-box h1 {
+    font-family: "Lilita One";
+    font-size: 38px;
+    margin-top: 0;
+}
+
+.overlay-box button,
+.results-box button {
+    display: block;
+    width: 100%;
+    margin-top: 9px;
+    padding: 14px;
+    border-radius: 14px;
+    background: #303c49;
+    font-weight: 900;
+}
+
+.overlay-box button:first-of-type,
+.results-box button:first-of-type {
+    background: var(--orange);
+}
+
+.result-distance {
+    padding: 14px;
+    background: #151c24;
+    border-radius: 15px;
+}
+
+.result-distance small {
+    display: block;
+    color: var(--muted);
+}
+
+.result-distance strong {
+    font-family: "Lilita One";
+    font-size: 40px;
+}
+
+.result-coins {
+    color: #ffd04a;
+    font-weight: 900;
+    margin: 12px;
+}
+
+#resultStats {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+    .menu-logo {
+        width: 300px;
+    }
+
+    .main-buttons {
+        gap: 8px;
+    }
+
+    .main-button {
+        min-height: 85px;
+        border-radius: 18px;
+    }
+
+    .main-button b {
+        font-size: 23px;
+    }
+
+    .menu-buttons button {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .garage-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-showcase {
+        min-height: 360px;
+    }
+
+    .garage-right {
+        min-height: 300px;
+    }
+
+    .showcase-stage {
+        height: 180px;
+    }
+
+    .panel-header {
+        height: 58px;
+    }
+
+    .panel-header h2 {
+        font-size: 23px;
+    }
+}
