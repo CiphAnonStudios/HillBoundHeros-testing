@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#11151c">
+
+<title>Hill Bound</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ROTATE -->
+<div id="rotate">
+    <div class="rotate-icon">📱</div>
+    <h2>Rotate Your Device</h2>
+    <p>Hill Bound is best played in landscape mode.</p>
+</div>
+
+<!-- INTRO -->
+<section id="intro" class="screen active">
+    <img src="images/ciphAnonStudios.png" class="studio-logo" alt="CiphAnon Studios">
+</section>
+
+<!-- LOADING -->
+<section id="loading" class="screen">
+    <div class="loading-box">
+        <img src="images/hillbound.png" class="game-logo" alt="Hill Bound">
+
+        <div class="loading-track">
+            <div id="loadingFill"></div>
+        </div>
+
+        <div id="loadingText">Loading...</div>
+        <div id="loadingTip">Tip: Land on your wheels!</div>
+    </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="screen">
+
+    <div class="menu-top">
+        <div class="currency">
+            <span class="coin-icon">●</span>
+            <span id="menuCoins">0</span>
+        </div>
+
+        <button id="fullscreenBtn" class="small-button">⛶</button>
+    </div>
+
+    <div class="menu-content">
+
+        <img src="images/hillbound.png" class="menu-logo" alt="Hill Bound">
+
+        <div class="best-box">
+            BEST DISTANCE
+            <strong><span id="menuBest">0</span> m</strong>
+        </div>
+
+        <div class="main-buttons">
+            <button id="raceBtn" class="main-button race-button">
+                <span>🏁</span>
+                <b>RACE</b>
+                <small>Beat the rival</small>
+            </button>
+
+            <button id="adventureBtn" class="main-button adventure-button">
+                <span>⛰️</span>
+                <b>ADVENTURE</b>
+                <small>Go as far as possible</small>
+            </button>
+        </div>
+
+        <div class="menu-buttons">
+            <button id="garageBtn">🚙 Garage</button>
+            <button id="charactersBtn">🎃 Characters</button>
+            <button id="missionsBtn">🏆 Missions</button>
+            <button id="settingsBtn">⚙ Settings</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- GARAGE -->
+<section id="garage" class="screen panel-screen">
+
+    <header class="panel-header">
+        <button class="backBtn">←</button>
+        <h2>Garage</h2>
+
+        <div class="currency small">
+            <span class="coin-icon">●</span>
+            <span id="garageCoins">0</span>
+        </div>
+    </header>
+
+    <div class="garage-layout">
+
+        <div class="vehicle-showcase">
+            <div class="showcase-stage">
+                <canvas id="previewCanvas" width="500" height="250"></canvas>
+            </div>
+
+            <h2 id="vehicleName">Trail Buggy</h2>
+            <p id="vehicleDescription">A balanced starter vehicle.</p>
+
+            <div class="stat-grid">
+                <div>
+                    <span>POWER</span>
+                    <div class="stat"><i id="powerStat"></i></div>
+                </div>
+
+                <div>
+                    <span>SPEED</span>
+                    <div class="stat"><i id="speedStat"></i></div>
+                </div>
+
+                <div>
+                    <span>GRIP</span>
+                    <div class="stat"><i id="gripStat"></i></div>
+                </div>
+
+                <div>
+                    <span>SUSPENSION</span>
+                    <div class="stat"><i id="suspensionStat"></i></div>
+                </div>
+            </div>
+
+            <button id="driveBtn" class="drive-button">DRIVE</button>
+        </div>
+
+        <div class="garage-right">
+
+            <h3>Vehicles</h3>
+            <div id="vehicleList" class="vehicle-list"></div>
+
+            <h3>Upgrades</h3>
+
+            <div class="upgrade-list">
+
+                <button class="upgrade" data-upgrade="engine">
+                    <div>
+                        <b>ENGINE</b>
+                        <small>More acceleration</small>
+                    </div>
+                    <span id="engineLevel">1/5</span>
+                </button>
+
+                <button class="upgrade" data-upgrade="suspension">
+                    <div>
+                        <b>SUSPENSION</b>
+                        <small>Better landings</small>
+                    </div>
+                    <span id="suspensionLevel">1/5</span>
+                </button>
+
+                <button class="upgrade" data-upgrade="tires">
+                    <div>
+                        <b>TIRES</b>
+                        <small>More traction</small>
+                    </div>
+                    <span id="tiresLevel">1/5</span>
+                </button>
+
+                <button class="upgrade" data-upgrade="grip">
+                    <div>
+                        <b>GRIP</b>
+                        <small>Better climbing</small>
+                    </div>
+                    <span id="gripLevel">1/5</span>
+                </button>
+
+            </div>
+
+            <h3>Stages</h3>
+            <div id="stageList" class="stage-list"></div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="characters" class="screen panel-screen">
+
+    <header class="panel-header">
+        <button class="backBtn">←</button>
+        <h2>Characters</h2>
+    </header>
+
+    <div id="characterList" class="character-list"></div>
+
+</section>
+
+<!-- MISSIONS -->
+<section id="missions" class="screen panel-screen">
+
+    <header class="panel-header">
+        <button class="backBtn">←</button>
+        <h2>Missions</h2>
+    </header>
+
+    <div id="missionList" class="mission-list"></div>
+
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="screen panel-screen">
+
+    <header class="panel-header">
+        <button class="backBtn">←</button>
+        <h2>Settings</h2>
+    </header>
+
+    <div class="settings-list">
+
+        <button id="soundToggle" class="setting">
+            <span>🔊 Sound</span>
+            <b>ON</b>
+        </button>
+
+        <button id="shakeToggle" class="setting">
+            <span>📳 Screen Shake</span>
+            <b>ON</b>
+        </button>
+
+        <button id="resetBtn" class="danger-setting">
+            Reset Progress
+        </button>
+
+    </div>
+
+</section>
+
+<!-- GAME -->
+<section id="gameScreen" class="screen">
+
+    <canvas id="game"></canvas>
+
+    <!-- HUD -->
+    <div id="hud">
+
+        <div class="hud-top">
+
+            <div class="distance-box">
+                <small>DISTANCE</small>
+                <b><span id="distance">0</span>m</b>
+            </div>
+
+            <div class="hud-coins">
+                ● <span id="gameCoins">0</span>
+            </div>
+
+            <button id="pauseBtn">Ⅱ</button>
+
+        </div>
+
+        <div class="race-bar" id="raceBar">
+            <div id="raceFill"></div>
+            <span>FINISH</span>
+        </div>
+
+        <div class="fuel-container">
+            <div class="fuel-icon">⛽</div>
+            <div class="fuel-bar">
+                <div id="fuelFill"></div>
+            </div>
+        </div>
+
+        <div class="combo-container">
+            <div id="comboText">COMBO x1</div>
+            <div class="combo-bar">
+                <div id="comboFill"></div>
+            </div>
+        </div>
+
+        <div id="missionPopup"></div>
+        <div id="trickPopup"></div>
+        <div id="countdown"></div>
+
+        <!-- PEDALS -->
+        <div class="controls">
+
+            <button id="brakeBtn" class="pedal brake">
+                ◀
+            </button>
+
+            <button id="gasBtn" class="pedal gas">
+                ▶
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PAUSE -->
+    <div id="pauseOverlay" class="overlay">
+
+        <div class="overlay-box">
+            <h1>PAUSED</h1>
+
+            <button id="resumeBtn">RESUME</button>
+            <button id="restartBtn">RESTART</button>
+            <button id="quitBtn">QUIT</button>
+        </div>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div id="resultsOverlay" class="overlay">
+
+        <div class="results-box">
+
+            <h1 id="resultTitle">RUN COMPLETE</h1>
+
+            <div class="result-distance">
+                <small>DISTANCE</small>
+                <strong><span id="resultDistance">0</span>m</strong>
+            </div>
+
+            <div class="result-coins">
+                +<span id="resultCoins">0</span> coins
+            </div>
+
+            <div id="resultStats"></div>
+
+            <button id="resultRestart">PLAY AGAIN</button>
+            <button id="resultMenu">MENU</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
